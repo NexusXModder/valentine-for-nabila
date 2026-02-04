@@ -59,5 +59,15 @@
   <!-- TENOR SCRIPT (ONLY ONCE) -->
   <script async src="https://tenor.com/embed.js"></script>
   <script src="script.js"></script>
+  <script src="https://unpkg.com/twemoji@latest/dist/twemoji.min.js" crossorigin="anonymous"></script>
+<script>
+  window.onload = function() {
+    twemoji.parse(document.body, {
+      folder: 'svg',
+      ext: '.svg'
+    });
+  }
+</script>
+
 </body>
 </html>
