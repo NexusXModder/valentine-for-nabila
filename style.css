@@ -1,8 +1,16 @@
+/* Apple Emoji Font Load */
+@font-face {
+  font-family: 'AppleColorEmoji';
+  src: local('Apple Color Emoji'), 
+       url('https://cdnjs.cloudflare.com/ajax/libs/apple-color-emoji/1.0.4/apple-color-emoji.ttf') format('truetype');
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  /* প্রথমে Poppins এবং তারপর Apple Emoji ফন্ট সেট করা হয়েছে */
+  font-family: 'Poppins', 'AppleColorEmoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
 }
 
 body {
@@ -28,7 +36,8 @@ body {
 }
 
 h1 {
-  font-family: 'Pacifico', cursive;
+  /* হেডিং-এর জন্য Pacifico ফন্টটি বজায় রাখা হয়েছে */
+  font-family: 'Pacifico', 'AppleColorEmoji', cursive;
   color: #ff4d6d;
   font-size: 32px;
   margin-bottom: 10px;
@@ -49,7 +58,13 @@ p {
 }
 
 button {
-  font-family: 'Poppins', sans-serif;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s;
+  font-family: 'Poppins', 'AppleColorEmoji', sans-serif;
   font-weight: 500;
   letter-spacing: 0.3px;
 }
