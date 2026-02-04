@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Special Surprise for Nabila ⏳</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    /* টাইমার পেজের জন্য এক্সট্রা ডিজাইন */
+    .timer-container {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 25px 0;
+    }
+    .time-box {
+      background: #ff4d6d;
+      color: white;
+      padding: 12px;
+      border-radius: 12px;
+      min-width: 65px;
+      box-shadow: 0 4px 10px rgba(255, 77, 109, 0.3);
+    }
+    .time-box span {
+      display: block;
+      font-size: 22px;
+      font-weight: 600;
+    }
+    .time-box label {
+      font-size: 10px;
+      text-transform: uppercase;
+      opacity: 0.9;
+    }
+    #unlockBtn {
+      display: none; /* সময় শেষ না হওয়া পর্যন্ত লুকানো থাকবে */
+      margin-top: 10px;
+      padding: 15px 35px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(76, 175, 80, 0.3);
+      animation: pulse 1.5s infinite;
+      transition: transform 0.2s;
+    }
+    #unlockBtn:active {
+      transform: scale(0.95);
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="card">
+      <h1>Wait, Nabila! ✋</h1>
+      <p>Something special is coming for you in...</p>
+      
+      <div id="timerDisplay" class="timer-container">
+        <div class="time-box"><span id="days">00</span><label>Days</label></div>
+        <div class="time-box"><span id="hours">00</span><label>Hours</label></div>
+        <div class="time-box"><span id="mins">00</span><label>Mins</label></div>
+        <div class="time-box"><span id="secs">00</span><label>Secs</label></div>
+      </div>
+
+      <button id="unlockBtn" onclick="location.href='index.html'">💝 Open Your Gift 💝</button>
+    </div>
+  </div>
+
+  <script>
+    // ১৩ ফেব্রুয়ারি রাত ১১:৫৯:০০ এ টাইমার সেট করা হয়েছে
+    const unlockDate = new Date("February 13, 2026 23:59:00").getTime();
+
+    const countdown = setInterval(function() {
+      const now = new Date().getTime();
+      const distance = unlockDate - now;
+
+      // ক্যালকুলেশন
+      const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const s = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // ডিসপ্লে আপডেট
+      document.getElementById("days").innerText = d < 10 ? '0' + d : d;
+      document.getElementById("hours").innerText = h < 10 ? '0' + h : h;
+      document.getElementById("mins").innerText = m < 10 ? '0' + m : m;
+      document.getElementById("secs").innerText = s < 10 ? '0' + s : s;
+
+      // সময় শেষ হয়ে গেলে যা হবে
+      if (distance < 0) {
+        clearInterval(countdown);
+        document.getElementById("timerDisplay").style.display = "none";
+        document.querySelector("p").innerText = "The wait is over! Your surprise is ready. 💖";
+        document.getElementById("unlockBtn").style.display = "inline-block";
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
